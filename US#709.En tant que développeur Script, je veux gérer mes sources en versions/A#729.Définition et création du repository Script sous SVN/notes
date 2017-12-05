@@ -1,10 +1,45 @@
-Définition et création du repository Script sous SVN: #729
+= Définition et création du repository Script sous SVN: #729
+{version}
+:toc:
+:toc-title: Sommaire
+:doctype: article
+:experimental: true
+:source-highlighter: rouge
+:listing-caption: Listing
+:pdf-page-size: A4
+:pdf-style: my
+:icons: font
+:icon-set: fa
+:sectnums!:
+:sectnumlevels: 2
+:lang: fr
 
-= Description
 
-= Etape I
+== Description
 
-= Validation
+Procédure SVN/Agora décrite dans un doc i-cube (à trouver; vérifier les droits de lecture).
+
+Le dépôt doit être crée dans la sandbox, ``tetris.agora.msanet`` (``170.217.252.177``);
+
+== Procédure
+
+La documentation ``AGL MU Y10 G2 AGL SVN`` fournit la procédure initiale.
+
+- il s'agit de créer un nouveau dépôt;
+- les hooks n'ont pas à être importés, on en créera de nouveaux selon les besoins;
+- une fois créée, les droits d'accès à la repo doivent être déclarés dans ls fichier d'accès SVN (``/etc/opt/CollabNet_Subversion/conf/svn_access_file`` pour ``tetris``).
+
+== Opérations
+
+=== création du dépôt
+
+    [svnadmin@tetris]~$ svnadmin create /DATASOFT/CSVN/PROCEDURES
+
+=== validation
+
+    [svnadmin@tetris]~$ svn list --verbose file:///DATASOFT/CSVN/PROCEDURES
+      0  ?                    Dec 05 12:55 ./
+      
 
 
 // vim: ft=asciidoc:
