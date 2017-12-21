@@ -1,0 +1,37 @@
+ifeval::[{env} == "dev"]
+:dev: 1
+endif::[]
+ifndef::version[]
+ifdef::dev[]
+v0.0, {localdatetime}: draft
+endif::dev[]
+ifndef::dev[]
+v0.9-RC1
+endif::dev[]
+endif::version[]
+:toc:
+:toc-title: Sommaire
+:doctype: article
+:experimental: true
+:source-highlighter: rouge
+:listing-caption: Listing
+:pdf-page-size: A4
+:pdf-style: my
+:icons: font
+:icon-set: fa
+:sectnums:
+:sectnumlevels: 2
+:lang: fr
+// :icon-set: octicon
+
+:sectnums!:
+
+ifdef::dev[]
+:version: {revnumber}.{revremark}.{revdate}
+endif::dev[]
+
+[.test-right]
+[.xsmall.gray]#_``{version}``_#
+
+
+

@@ -1,0 +1,84 @@
+= UL: notes étude
+Christophe Berbizier <ext_berbizier.christophe@agora.msa.fr>
+:pdf-style: my
+include::0.common.adoc[]
+:fn: 0
+:rfn: 0
+
+== Etude de l'existant
+
+[NOTE]
+====
+- les pratiques, les méthodes, les process...
+- le niveau des acteurs; répondre à la question, selon les domaines interrogés, "qu'est-ce qu'un développeur ?" -- autrement dit, le développeur sait-il/veut-il s'occuper des problématiques de gestion de code source
+- un développeut cobol peut-il ingérer git ?...
+====
+
+== Grands objectifs
+
+[NOTE]
+====
+- méthodo/fonctionnel/organisation
+- maintenance (pas plus de 2 outils: au-delà, saurait-on les maintenir, ie., updates, upgrades, etc.)
+====
+
+=== principes fondamentaux
+:fn: 0
+:rfn: {counter:rfn}
+
+La gestion de sources (SCM) -- ou gestion de versions (VCS) -- est basée sur le différentiel existant entre l'état du code à un instant T et son état à l'instant T+N.
+Tous les VCS reposent sur ce principe mais tous n'implémentent pas la même approche.
+
+Il existe deux approches principale:
+
+1. l'approche globale
+2. et l'approche unitaire^[<<ref{ref}-{counter:fn},{fn}>>]^
+
+**L'approche unitaire** considère chaque fichier comme l'élément à historiser. Concrètement, cela revient à avoir une version propre à chaque fichier.
+
+Cette approche peut-être envisagée pour gérer des scripts d'automatisation, de petits utilitaires, des fichiers de configuration d'applications... C'est-à-dire toute forme d'élément représentant l'unité, le source de manière suffisante.
+
+Parmis les systèmes reconnus implémentant cette approche, on peut citer CVS, Subversion ou RCS.
+
+**L'approche globale** ne considère plus le fichier individuel mais l'ensemble du code source comme unitaire. Les fichiers ne sont plus traités individuellent mais associés à un système de fichiers, un arbre, dont on conserve les changements.
+Cette approche, qui peut d'abord sembler plus grossière que l'approche unitaire, permet notamment de conserver la relation entre les différentes branches historiques du code source et de résoudre plus clairement les conflits lors de la fusion de branches entre elles. Poussée à son paroxysme, l'approche permet de sélectionner (``cherry-pick``) et rejouer des patches dans n'importe quel ordre, ou presque.
+
+On peut le remarquer, cette approche intègre des principes relevant de la gestion de configurations; elle peut être envisagée pour gérer un ensemble de sources complexe, avec beaucoup d'intrications, sur lequel on voudra effectuer de la revue systématique, automatiser l'intégration, la compilation, mesurer la qualité, etc. et, de fait, permettre le rejet d'un changement sans compromettre la validité du source.
+
+Parmis les systèmes reconnus implémentant cette approche, on peut citer git, Mercurial ou Darcs.
+
+---
+:fn: 0
+[.fn]
+[[ref{rfn}-{counter:fn}]]
+*[{fn}]* pour des raisons de clarté, on associera unité et fichier individuel
+
+=== approche méthodologique
+:fn: 0
+:rfn: {counter:rfn}
+
+La gestion de code source s'appuie sur les outils mis à sa disposition, mais c'est l'approche méthodologique qui permet d'en établir la qualité.
+Un code source bien géré permet l'intégration rapide de correctifs, offre l'assurance d'une intégration valide, une livraison fiable et une production de qualité.
+
+On le voit, le VCS ne constitue qu'une partie, un outil, une possibilité, de la gestion de source.
+D'un point de vue fonctionnel, l'expérience nous enseigne que le code source est mieux géré lorsque l'on sépare les espaces de développement et les espace de production. D'un point de vue VCS, cela revient à conserver une branche stable destinée à la production et des branches de travail, qui n'ont pas vocation à la publicité.
+
+L'expérience nous enseigne également que l'espace de travail, plus difficile à contrôler car propriété des développeurs, est une source de confusion et d'erreurs: les brouillons, les modifications provisoires, les tests d'implémentation, etc. s'accumulent dans cet espace et la distinction entre important et périmé devient de plus en plus difficile à établir; les développeurs ayant souvent plusieurs espaces de travail, la confusion et les erreurs augmentent rapidement.
+
+
+NOTE: **TODO**
+
+---
+:fn: 0
+[.fn]
+[[ref{rfn}-{counter:fn}]]
+*[{fn}]* cf. http://nvie.com/posts/a-successful-git-branching-model[aaa]
+
+
+== Choix de SCM possibles
+
+== Actions, stratégie à mener
+
+
+
+// vim: set ft=asciidoc:
